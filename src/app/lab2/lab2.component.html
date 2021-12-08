@@ -1,0 +1,37 @@
+<h2>Гра буде продовжувтися доки один із гравців не набере 7 очок</h2>
+<div class="main">
+  <div class="left">
+    <div class="score">
+      <p>Гравець 1: <b>{{score.player1}}</b></p>
+      <p>Гравець 2: <b>{{score.player2}}</b></p>
+    </div>
+    <div class="btns">
+      <div class="btn-block">
+        <button mat-raised-button color="primary" (click)="chooseWinner(0)">Камінь</button>
+        <button mat-raised-button color="primary" (click)="chooseWinner(1)">Ножиці</button>
+        <button mat-raised-button color="primary" (click)="chooseWinner(2)">Бумага</button>
+      </div>
+      <button mat-raised-button color="primary" class="tip" (click)="showTip()">Вивести підказку</button>
+    </div>
+  </div>
+  <div class="right">
+    <h1>Математична модель</h1>
+    <div>
+      <div class="header-block">
+        <div *ngFor="let header of headers" class="header">
+          <span>{{header}}</span>
+        </div>
+      </div>
+      <div class="body-block">
+        <ng-container *ngFor="let item of form.controls">
+          <div [formGroup]="item" class="body-row">
+            <div class="body-item __name">{{item.get('name').value}}</div>
+            <input class="body-item" type="text" formControlName="a">
+            <input class="body-item" type="text" formControlName="b">
+            <input class="body-item" type="text" formControlName="c">
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
